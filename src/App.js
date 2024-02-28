@@ -11,7 +11,7 @@ function App() {
         <input type="number"></input>
         <label>Product Name : </label>
         <input type="text"></input>
-        <button type="button">Add Product</button>
+        <button type="button">Add Product</button> 
       </div>
     </form>
   );
