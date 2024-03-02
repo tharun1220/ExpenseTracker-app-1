@@ -1,19 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
+import ExpenseForm from "./Components/ExpenseForm";
+import ExpenseList from "./Components/ExpenseList";
 
 function App() {
+  const [expensesList, setExpensesList] = useState([]);
+
+  const addExpenseItemHandler = (productId, productPrice, productName) => {
+    setExpensesList((prevExpenseItemList) => {
+      return [
+        ...prevExpenseItemList,
+        { id: productId, price: productPrice, name: productName },
+      ];
+    });
+  };
   return (
-    <form>
-      <div>
-        <label>Product ID : </label>
-        <input type="number"></input>
-        <label>Selling Price : </label>
-        <input type="number"></input>
-        <label>Product Name : </label>
-        <input type="text"></input>
-        <button type="button">Add Product</button>
-      </div>
-    </form>
+    <>
+      <ExpenseForm onExpenseForm={addExpenseItemHandler} />
+      <ExpenseList Expenses={expensesList}/>
+    </>
   );
 }
 
